@@ -2,6 +2,16 @@
 //import express from "express"; --- Itype =>commonjs   
 import express from "express"; 
 const app = express();  
+import path from "path";
+
+
+
+//middleware : that run before all routes ,you can create multiple middlewares in server
+//use case : user data verification, authentication, cookies management, etc
+app.use(function(req, res, next)    {            
+    console.log("Middleware is running!!");
+   next();//important to run next code
+});
 
 //create a route
 //app.get('frontend path', callback function)
@@ -22,8 +32,16 @@ app.get("/login", function(req, res) {
     res.send("Welcome To Login Page!!");
 });
 
-app.get("/signup", function(req, res) {
-    res.render("index");
+// render file
+app.get("/signup", (req, res) => {
+    const __dirname = path.resolve();
+    const filePath = path.join(__dirname, "view", "index.html");
+    res.sendFile(filePath);
+});
+
+// error handling : always write after all routes
+app.use(function (req, res, next) {
+    res.status(404).send("Not Found");
 });
 
 app.listen(3000);
