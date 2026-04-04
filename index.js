@@ -1,85 +1,110 @@
-const fs = require("node:fs");
+// ===========================================================================================================
+// const fs = require("node:fs");
 
-// create a file
-// fs.appendfile(path, data, callback fnc)
-fs.appendFile("hello.txt", "hello world !", (e) => {
-    if (e) throw error;
-    console.log("new file created");
-});
+// fs = file system
 
-fs.appendFile("index.html", "<h1>Hello World</h1>", (e) => {
-    if (e) throw error;
-    console.log("create index.html file");
-});
-
-// create a file
-// fs.mkdir(path, data, callback fnc)
-//  fs.mkdir("images", (e) => {
-//     if (e) throw error;
-//     console.log("create a images folder ");
-
+// create file
+// fs.appendFile(path, data, cb fnc)
+// fs.appendFile("hello.txt", "Hello World !!", (e) => {
+//   if (e) throw error;
+//   console.log("create a hello.txt")
 // });
-// if you want to create nested folder and files 
-// then you have to changedefault setting ==>recursive :true
-fs.mkdir("css/style.js" ,{ recursive: true},(e) => {
-    if (e) throw error;
-    console.log("create a style.js file into css folder ");
-});
+// isuue: every time you run the file that put new data with exiting data, so that print same data every time you run the file
 
-fs.mkdir("css/style.css" ,{ recursive: true},(e) => {
-    if (e) throw error;
-    console.log("create a style.js file into css folder ");
-});
+// fs.writeFile(path, data, cb fnc)
+// fs.writeFile("hello.txt", "Hello World !!", (e) => {
+//   if (e) throw error;
+//   console.log("create a hello.txt");
+// });
+// issue: when you change hello.txt file and after that you run the file that cmd will be replace whole file with above given data
 
+// =============================================
 
-
-// rename files
-// // fs.rename('filename old', 'filename new', callback fnc)
-// fs.rename("hello.txt","world.txt",(e) => {
-//     if (e) throw error;
-//     console.log("file name changed to world.txt");
+// create a folder
+// fs.mkdir(path, cb fnc)
+// fs.mkdir("Pages", (e) => {
+//   if (e) throw error;
+//   console.log("create a new folder -- Pages");
 // });
 
-//remove folder
-// fs.rmdir(path, callback fnc)
-// fs.rmdir("images", (e) => {
-//     if (e) throw error;
-//     console.log("css folder removed");
+// create a nested folder
+// fs.mkdir(path, {options}, cb fnc)
+// fs.mkdir("CSS/Home/Style", { recursive: true }, (e) => {
+//   if (e) throw error;
+//   console.log("create a nested folder of CSS");
 // });
 
-//file remove
-// fs.rm(path, callback fnc)
-// fs.rm("css/style.css", {recursive: true}, (e) => {
-//     if (e) throw error;
-//     console.log("style.css file removed");
+// ===================================================
+
+// read file
+// fs.readFile(path, fnc(e, data){})
+// fs.readFile("hello.txt", "utf-8", (e, data) => {
+//   if (e) throw error;
+//   console.log(data);
+// });
+// as a response you get data (files inputes)
+
+// read folder
+// fs.readdir(path, fnc(e, files){})
+// fs.readdir("CSS/Home/Style", (e, files) => {
+//   if (e) throw error;
+//   console.log(files);
+// });
+// as a response you get a array of folder and files name
+
+// =======================================
+
+// copy files
+// fs.copyFile('path with file name', 'path with new file name', cb fnc)
+// fs.copyFile("hello.txt", "CSS/Home/Style/copy.txt", (e) => {
+//   if (e) throw error;
+//   console.log("File Copy Sucessfully");
 // });
 
-//read file
-// fs.readFile(path, callback fnc)
-fs.readFile("index.html", "utf-8", (e, data) => {
-    if (e) throw error;
-    console.log(data);
-    console.log("read the file - index.html");
-});
+// ===========================================
 
-fs.readFile("world.txt", "utf-8", (e, data) => {
-    if (e) throw error;
-    console.log(data);
-    console.log("read the file - world.txt");
-});
+// rename file
+// fs.rename('old(exiting) file name with path', 'new file name with path', cb fnc )
+// fs.rename("hello.txt", "name.txt", (e) => {
+//   if (e) throw error;
+//   console.log("rename file");
+// });
 
-//read folder ==> give folders name array
-// fs.readdir(path, callback fnc)
-fs.readdir("css", (e, files) => {
-    if (e) throw error;
-    console.log(files);
-    console.log("read the folder - css");
-});
+// nest file rename and move
+// fs.rename("rename.txt", "CSS/Home/Style/abc.txt", (e) => {
+//   if (e) throw error;
+//   console.log("rename file");
+// });
 
-//copy file
-// fs.copyFile(path of source (filename), path of (destination )file, callback fnc)
-fs.copyFile("index.html", "copy.html", (e) => {
-    if (e) throw error;
-    console.log("file copied successfully to copy.html");
-});
+// rename folder
+// fs.rename("CSS/Home/Component", "CSS/Home/Components", (e) => {
+//   if (e) throw error;
+//     console.log("rename folder");
+// });
 
+// ===================================================
+
+// delete file
+// fs.rm(file name with path, cb fnc)
+// fs.rm("name.txt", (e) => {
+//   if (e) throw error;
+//   console.log("delete file");
+// });
+
+// delete folder
+// fs.rm("Pages", { recursive: true, force: true }, (e) => {
+//   if (e) throw error;
+//   console.log("delete folder");
+// });
+
+
+// fs.rm("name.js", (e) => {
+//   if (e) throw error;
+//   console.log("delete file");
+// });
+
+// ---------------------------------------------
+import chalk from 'chalk';
+
+console.log(chalk.bgWhite.blue('Hello world!'));
+console.log(chalk.bgMagentaBright.red('index.js file'));

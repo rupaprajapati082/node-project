@@ -1,0 +1,55 @@
+//node npm init -y -------------->>>>>>>>> aa command terminal ma run karvathi packeage.json file create thase
+
+joy ne delete kari devi
+
+pachu npm init karvu
+version ma 1.0.1 lakhvu 
+and author name ma dhruvi patel
+baki badha ma enter karvu
+
+aatle packeage.json file create thase 
+
+node.js ni 
+
+
+package.json auto banava mate :
+    npm init -y ->  aa command terminal ma run karta ,package.json file auto crete thay jashe .
+manually banava mate :
+    npm init -command ru in terminal ma
+    package name: (node)
+    version: (1.0.0) 1.0.1
+    description: create node server basic
+    entry point: (index.js)
+    test command:
+    git repository:
+    keywords:
+    author: palak vanjara
+    license: (ISC)
+
+is this ok ma -yes click
+
+->reate index.js file.
+pachi node.js ni webiste mathi "files System" ma javanu tema ctrl+f karvanu fs.append search ane
+je link aave teno code index.js ni file ma muko.
+
+->index.js ma aa code lakho :const { error } = require("node:console");
+const fs = require("node:fs");
+//create a file
+//fs.appendfile(path, data, callback fnc)
+fs.appendFile("hello.txt",'hello world !', (e)=>{
+    if(e) throw error;
+    console.log("new file created");
+})
+pachi terminal ma node index.js run karo.
+aetle 'new file creted " message aavshe.
+->index.js ni file ma code lakhata jaiye ane terminal ma "node index.js " command run karaviye to navi files and folder bani jay.
+
+
+npm ni official website pr jay ne chalk search marvu 
+ans first link pr click karvu
+chalk install karvu ::::::::::::::: npm install chalk 
+packeage.json ma type ma commen.js ne badle module lakhvu
+
+
+koy pn packeage ne unistall karvu hoy to 
+npm unistall packeage_name  /   npm un packeage_name
