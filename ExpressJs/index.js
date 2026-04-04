@@ -42,7 +42,8 @@ app.get("/signup", (req, res) => {
 // error handling : always write after all routes
 app.use(function (req, res, next) {
     res.status(404).send("Not Found");
+    res.status(500).send("Something went wrong!!");
 });
 
-app.listen(3000);
- console.log("check on you browser: http://localhost:3000");
+app.listen(1234);
+ console.log("check on you browser: http://localhost:1234");

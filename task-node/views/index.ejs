@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-black text-white">
+    <!-- Add task Form  -->
+
+    <h1 class="text-3xl my-3 text-center font-semibold">
+      Task Management With Files
+    </h1>
+    <div class="flex justify-center">
+      <form action="/create" method="post">
+        <input
+          type="text"
+          class="px-4 py-2 bg-[#555] text-white outline-none rounded-md my-2"
+          name="title"
+          id=""
+          placeholder="Task Heading"
+        />
+        <br />
+        <input
+          type="text"
+          class="px-4 py-2 bg-[#555] text-white outline-none rounded-md my-2"
+          name="task"
+          id=""
+          placeholder="Task Message"
+        />
+        <br />
+        <input
+          type="submit"
+          value="Add Task"
+          class="w-full bg-orange-600 px-4 py-2 rounded-md"
+        />
+      </form>
+    </div>
+
+    <!-- Task card  -->
+    <div class="mt-8 flex justify-center flex-wrap gap-4">
+        <% data.forEach(function(val){ %>
+
+      <div class="bg-[#222] border border-red-500 rounded-xl text-white p-4 w-1/4">
+        <h1 class="font-medium text-2xl pb-4"><%= val %></h1>
+        <div class="flex justify-between">
+            <a class="text-blue-500 active:text-red-600" href="/files/<%= val %>">Read More</a>
+            <a class="text-gray-600 active:text-red-600" href="/files/<%= val %>/edit">Edit File</a>
+        </div>
+      </div>
+
+      <%  }) %>
+
+    </div>
+  </body>
+</html>
