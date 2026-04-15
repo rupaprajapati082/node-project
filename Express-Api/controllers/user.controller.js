@@ -9,14 +9,14 @@ module.exports.registerUser = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-const {username, email, password} = req.body;
+const {username,email,password} = req.body;
    //check user already exist or not in database
    let isExist = await userModel.findOne({email: email});
    if (isExist) {
        return res.status(400).json({message: 'User already exists'});
    }
    const hashPassword = await userModel.hashPassword(password);
-   const user = await userService.createUser({username, email, password: hashPassword});
-   let token = await user.generateAuthToken();
+   const user = await userService.createUser({username,email,password: hashPassword});
+   let token = await user.generateJwtToken();
    res.status(200).json({message: 'User registered successfully', user, token});
 };

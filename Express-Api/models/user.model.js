@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -22,14 +21,14 @@ let userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['admin', 'user'],
+        enum: ['user', 'admin'],
         default: 'user',
     },
    
 });
 //create a method for jwt token
 
-userSchema.methods.generateAuthToken = function() {
+userSchema.methods.generateJwtToken = function() {
    let token = jwt.sign({_id: this._id}, process.env.JWT_SECRET_KEY, {expiresIn: '7d'});
    return token;
 

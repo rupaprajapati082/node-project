@@ -6,7 +6,7 @@ const express = require('express');
 const db = require('./config/db');
 const userRoute = require('./routes/web/user.route');
 const app = express();
-app.use('/api/v1/user', userRoute);
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +21,7 @@ PORT = process.env.PORT;
 app.get("/", (req, res) => {
     res.send('server homepage ');
 });
-
+app.use('/user', userRoute);
 app.listen(PORT, () => {        
     console.log(`✅server is running on port ${PORT}`);
 });
