@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 
 export default function ProfilePage() {
   // Mock data - replace with your actual state or props
   const user = {
     username: "alex_dev",
-    email: "alex.design@example.com"
+    email: "alex.design@example.com",
   };
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center bg-slate-50 overflow-hidden font-sans">
-
       {/* Background Wash Parallax */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[20%] left-[-5%] w-80 h-80 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
@@ -18,10 +17,9 @@ export default function ProfilePage() {
 
       {/* Profile Card */}
       <div className="relative z-10 w-full max-w-sm p-10 mx-4 bg-white/40 backdrop-blur-2xl border border-white/60 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)]">
-
         <div className="flex flex-col items-center text-center">
           {/* Minimal Avatar Placeholder */}
-          <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-tr from-slate-100 to-slate-200 flex items-center justify-center border border-white shadow-inner">
+          <div className="w-24 h-24 mb-6 rounded-full bg-linear-to-tr from-slate-100 to-slate-200 flex items-center justify-center border border-white shadow-inner">
             <span className="text-2xl font-light text-slate-400">
               {user.username.charAt(0).toUpperCase()}
             </span>
@@ -32,9 +30,7 @@ export default function ProfilePage() {
             <h1 className="text-2xl font-semibold text-slate-900 tracking-tight">
               @{user.username}
             </h1>
-            <p className="text-sm text-slate-500 font-medium">
-              {user.email}
-            </p>
+            <p className="text-sm text-slate-500 font-medium">{user.email}</p>
           </div>
 
           {/* Minimal Actions */}

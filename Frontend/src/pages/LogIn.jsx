@@ -1,6 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
+  const [formData, setEmail] = useState({
+    email: "",
+    password: "",   
+  }
+);
+  const [error, setError] = useState("");
+
+  const submitForm = async () => {
+   
+    console.log("submit Form");
+  };
+
+  const handleChange = (e) => {
+    setEmail({...formData, [e.target.name]: e.target.value});
+  };
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center bg-slate-50 overflow-hidden">
 
@@ -18,12 +34,17 @@ export default function LoginPage() {
           <p className="text-sm text-slate-500 mt-1">Sign in to your account</p>
         </div>
 
-        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-5" onSubmit={(e) => { e.preventDefault();
+           submitForm();
+            }}>
           <div className="space-y-1">
             <input
               type="email"
               placeholder="Email"
+                value={formData.email}
+              onChange={handleChange}
               className="w-full px-4 py-3 bg-white/60 border border-slate-200/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-200 focus:bg-white transition-all placeholder:text-slate-400 text-sm"
+          
             />
           </div>
 
@@ -31,13 +52,15 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
               className="w-full px-4 py-3 bg-white/60 border border-slate-200/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-200 focus:bg-white transition-all placeholder:text-slate-400 text-sm"
             />
           </div>
 
           <button className="w-full py-3 bg-slate-900 text-white text-sm font-medium rounded-xl hover:bg-slate-800 transition-colors shadow-sm">
             Continue
-          </button>
+          </button> 
         </form>
 
         <div className="mt-8 flex flex-col items-center gap-3">
@@ -46,7 +69,7 @@ export default function LoginPage() {
           </a>
           <div className="h-px w-8 bg-slate-200"></div>
           <p className="text-xs text-slate-500">
-            Don't have an account? <a href="#" className="text-slate-900 font-medium hover:underline">Join us</a>
+            Don't have an account? <Link to="/joinus" className="text-slate-900 font-medium hover:underline">Join us</Link>
           </p>
         </div>
       </div>

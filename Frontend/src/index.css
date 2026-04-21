@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @theme {
   /* Defining the blob animation for the wash effect */
   --animate-blob: blob 7s infinite;

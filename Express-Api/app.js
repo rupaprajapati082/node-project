@@ -4,6 +4,8 @@ dotenv.config();
 
 const express = require('express');
 const db = require('./config/db');
+const cors = require('cors');
+
 const userRoute = require('./routes/web/user.route');
 const app = express();
 
@@ -11,6 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 db();
+
+//cors origin --> allow only that website or port that mentioned in origin to access the backend 
+// server 3002 requests other than give cors origin error
+
+app.use(cors({origin: 'http://localhost:3002' , credentials: true}));
 //to excess env values in file:
 //backend (node + express) --> process.env.(env file variable name) --> process.env.PORT
 
