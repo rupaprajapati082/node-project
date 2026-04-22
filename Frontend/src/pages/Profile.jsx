@@ -1,11 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, {  useEffect, useState } from "react";
+
 
 export default function ProfilePage() {
-  // Mock data - replace with your actual state or props
-  const user = {
-    username: "alex_dev",
-    email: "alex.design@example.com",
-  };
+ const [data,setData] = useState("");
+ useEffect(() => {
+  const FetchData = async () => {
+    let response = await axios.get(`${import.meta.env.VITE_BASE_URL}/user/profile`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    })
+    console.log(response);
+    setData(response.data?.user);
+
+
+  }
+
+  FetchData();
+  },[]);
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center bg-slate-50 overflow-hidden font-sans">
@@ -21,16 +34,16 @@ export default function ProfilePage() {
           {/* Minimal Avatar Placeholder */}
           <div className="w-24 h-24 mb-6 rounded-full bg-linear-to-tr from-slate-100 to-slate-200 flex items-center justify-center border border-white shadow-inner">
             <span className="text-2xl font-light text-slate-400">
-              {user.username.charAt(0).toUpperCase()}
+              {data?.username?.charAt(0).toUpperCase()}
             </span>
           </div>
 
           {/* User Info */}
           <div className="space-y-1 mb-10">
             <h1 className="text-2xl font-semibold text-slate-900 tracking-tight">
-              @{user.username}
+              @{data.username}
             </h1>
-            <p className="text-sm text-slate-500 font-medium">{user.email}</p>
+            <p className="text-sm text-slate-500 font-medium">{data .email}</p>
           </div>
 
           {/* Minimal Actions */}

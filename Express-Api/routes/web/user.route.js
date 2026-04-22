@@ -26,5 +26,15 @@ router.post('/register', [body('username').isLength({min: 5}).withMessage('Usern
 //router --> middleware --> controller
 router.get('/profile', middleware.authUser, userController.profileUser);
 
+
+//edit profile
+//router --> service --> controller
+
+router.put("/update", middleware.authUser,userController.updateProfile);
+
+
+//logout
+//router --> controller
+router.get("/logout", middleware.authUser,userController.logoutUser);
 module.exports = router;
 

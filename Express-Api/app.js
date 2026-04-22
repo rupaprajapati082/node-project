@@ -5,14 +5,19 @@ dotenv.config();
 const express = require('express');
 const db = require('./config/db');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
+//router
 const userRoute = require('./routes/web/user.route');
+const adminRouter= require('./routes/web/admin.route');
+
 const app = express();
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 db();
+app.use(cookieParser());
 
 //cors origin --> allow only that website or port that mentioned in origin to access the backend 
 // server 3002 requests other than give cors origin error
@@ -29,6 +34,7 @@ app.get("/", (req, res) => {
     res.send('server homepage ');
 });
 app.use('/user', userRoute);
+app.use('/profile', adminRouter);
 app.listen(PORT, () => {        
     console.log(`✅server is running on port ${PORT}`);
 });
