@@ -34,7 +34,10 @@ app.get("/", (req, res) => {
     res.send('server homepage ');
 });
 app.use('/user', userRoute);
-app.use('/profile', adminRouter);
+
+app.use("/admin", adminRouter);
+
+
 app.listen(PORT, () => {        
     console.log(`✅server is running on port ${PORT}`);
 });
