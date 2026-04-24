@@ -8,9 +8,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 //router
-const userRoute = require('./routes/web/user.route');
+const userRouter = require('./routes/web/user.route');
 const adminRouter= require('./routes/web/admin.route');
-
+const productRouter = require('./routes/web/product.route');
 const app = express();
 
 
@@ -33,9 +33,11 @@ PORT = process.env.PORT;
 app.get("/", (req, res) => {
     res.send('server homepage ');
 });
-app.use('/user', userRoute);
+app.use('/user', userRouter);
 
 app.use("/admin", adminRouter);
+
+app.use("/product", productRouter);
 
 
 app.listen(PORT, () => {        
