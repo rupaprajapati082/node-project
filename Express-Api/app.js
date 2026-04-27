@@ -11,6 +11,10 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/web/user.route');
 const adminRouter= require('./routes/web/admin.route');
 const productRouter = require('./routes/web/product.route');
+const chatRouter = require('./routes/web/chat.route');
+const cartRouter = require('./routes/web/cart.route');
+
+
 const app = express();
 
 
@@ -38,6 +42,10 @@ app.use('/user', userRouter);
 app.use("/admin", adminRouter);
 
 app.use("/product", productRouter);
+
+app.use("/bot", chatRouter);
+
+app.use("/cart", cartRouter);
 
 
 app.listen(PORT, () => {        
